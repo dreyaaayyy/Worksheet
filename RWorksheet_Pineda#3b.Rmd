@@ -149,6 +149,3 @@ Greater_Five
 #On this day, July 21st, all sentiments rise, with the negative dominating. This could imply that something happened that day that prompted negative responses from the people.
 
 #We can conclude from this data that public sentiment is open to external forces and that it evolves over time.
-
-
-

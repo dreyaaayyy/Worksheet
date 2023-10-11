@@ -1,0 +1,271 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={RWorksheet\_Pineda\#3b.Rmd},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{RWorksheet\_Pineda\#3b.Rmd}
+\author{}
+\date{\vspace{-2.5em}2023-10-11}
+
+\begin{document}
+\maketitle
+
+\hypertarget{r-markdown}{%
+\subsection{R Markdown}\label{r-markdown}}
+
+This is an R Markdown document. Markdown is a simple formatting syntax
+for authoring HTML, PDF, and MS Word documents. For more details on
+using R Markdown see \url{http://rmarkdown.rstudio.com}.
+
+When you click the \textbf{Knit} button a document will be generated
+that includes both content as well as the output of any embedded R code
+chunks within the document. You can embed an R code chunk like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(cars)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      speed           dist       
+##  Min.   : 4.0   Min.   :  2.00  
+##  1st Qu.:12.0   1st Qu.: 26.00  
+##  Median :15.0   Median : 36.00  
+##  Mean   :15.4   Mean   : 42.98  
+##  3rd Qu.:19.0   3rd Qu.: 56.00  
+##  Max.   :25.0   Max.   :120.00
+\end{verbatim}
+
+\hypertarget{including-plots}{%
+\subsection{Including Plots}\label{including-plots}}
+
+You can also embed plots, for example:
+
+\includegraphics{RWorksheet_Pineda-3b_files/figure-latex/pressure-1.pdf}
+
+Note that the \texttt{echo\ =\ FALSE} parameter was added to the code
+chunk to prevent printing of the R code that generated the plot.
+
+\#1.a Respondents\_Num \textless- c(1:20) Sex \textless-
+c(2,2,1,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,1,2) Father\_Occ \textless-
+c(1,3,3,3,1,2,3,1,1,1,3,2,1,3,3,1,3,1,2,1) Person\_Home \textless-
+c(5,7,3,8,5,9,6,7,8,4,7,5,4,7,8,8,3,11,7,6) Siblings\_Sch \textless-
+c(6,4,4,1,2,1,5,3,1,2,3,2,5,5,2,1,2,5,3,2) House\_Type \textless-
+c(1,2,3,1,1,3,3,1,2,3,2,3,2,2,3,3,3,3,3,2)
+
+Data\_Household \textless- data.frame(Respondents = Respondents\_Num,
+Sex = Sex, FathersOccupation = Father\_Occ, PersonAtHome = Person\_Home,
+SiblingsAtSchool = Siblings\_Sch, HouseType = House\_Type)
+Data\_Household
+
+\#1.b
+
+str(Data\_Household) summary(Data\_Household)
+
+\#The data frame consists of 20 observations(rows) and 6 variables
+(columns) \#The data frame consists of 6 variables (columns) and 20
+observations (rows)
+
+\#Respondents - which contains a numeric identifier for each repondents
+\#Sex - (1 for male, 2 for female) represents the respondent's gender
+\#Fathers Occupation - indicates the father's occupaation ( 1 for
+farmer, 2 for driver, 3 for others) \#Person at Home - shows number of
+person at home \#Siblings at School - number of siblings at school
+\#Type of House - describes the type of house (1 for wood, 2 for
+semi-concrete, 3 for concrete)
+
+\#1.c Siblings\_Sch\_mean \textless-
+mean(Data\_Household\$SiblingsAtSchool) Siblings\_Sch\_mean
+
+\#The mean of SIblings at School is 2.95
+
+\#1.d First\_TwoRows \textless- Data\_Household{[}1:2,{]} First\_TwoRows
+
+\#1.e ThirdandForth\_Rows \textless- Data\_Household{[}c(3,5),c(2,4){]}
+ThirdandForth\_Rows
+
+\#1.f House\_Type \textless- Data\_Household\$HouseType House\_Type
+
+\#1.g MaleFarmer \textless-
+Data\_Household{[}Data\_Household\(Sex == 1 & Data_Household\)FathersOccupation
+== 1,{]} MaleFarmer
+
+\#1.h FemaleRespondents \textless-
+Data\_Household{[}Data\_Household\$SiblingsAtSchool \textgreater=5,{]}
+FemaleRespondents
+
+\#There are 5 observations
+
+\#2 Data\_Frame =
+data.frame(Ints=integer(),Doubles=double(),Characters=character(),Logicals=logical(),Factors=factor(),stringsAsFactors=FALSE)
+
+print(``Structure of the Empty Data Frame:'') print(str(Data\_Frame))
+
+\#Data\_Frame have empty date frame with 0 rows and 5 columns \#The
+columns have the following date type: \#Int = integer \#Doubles = double
+\#Characters = character \#Logicals = logical \#Factors = factor \#0
+means leves are empty \#Can be served as template where it can be
+populated with data
+
+\#3 RespondentsNew \textless- c(1:10) SexNew \textless- c(``Male'',
+``Female'', ``Female'', ``Male'', ``Male'', ``Female'', ``Female'',
+``Male'', ``Female'', ``Male'') OccNew \textless- c(1,2,3,3,1,2,2,3,1,3)
+PersonHome\_New \textless- c(5,7,3,8,6,4,4,2,11,6) SibsNew \textless-
+c(2,3,0,5,2,3,1,2,6,2) HouseNew \textless- c(``Wood'', ``Congrete'',
+``Congrete'', ``Wood'', ``Semi-Congrete'', ``Semi-Congrete'', ``Wood'',
+'' Semi-Congrete'',``Semi-Congrete'', ``Congrete'')
+
+Data\_Household \textless- data.frame(Respondents = RespondentsNew, Sex
+= SexNew, FathersOccupation = OccNew, PersonAtHome = PersonHome\_New,
+SiblingsAtSchool = SibsNew, HouseType = HouseNew)
+
+write.csv(Data\_Household, file = ``DataHousehold.csv'')
+
+\#3.a imported \textless- read.csv(``DataHousehold.csv'') imported
+
+\#3.b imported\(Sex <- factor(imported\)Sex, levels = c(``Male'',
+``Female'')) imported\(Sex <- as.integer(imported\)Sex) imported\$Sex
+
+\#3.c imported\(HouseType <- factor(imported\)HouseType, levels =
+c(``Wood'', ``Congrete'', ``Semi-Congrete''))
+imported\(HouseType <- as.integer(imported\)HouseType)
+imported\$HouseType
+
+\#3.d imported\(FathersOccupation <- factor(imported\)FathersOccupation,
+levels = c(1,2,3), labels = c(``Farmer'', ``Driver'', ``Others''))
+imported\(FathersOccupation <- as.integer(imported\)FathersOccupation)
+imported\$FathersOccupation
+
+\#3.e FemaleDriver \textless-
+(imported\(Sex == 2 & imported\)FathersOccupation == ``Driver'')
+FemaleDriver
+
+\#3.f Greater\_Five \textless- imported{[}imported\$SIblingsAtSchool
+\textgreater=5,{]} Greater\_Five
+
+\#4 \#On this day, July 14th, negative sentiments outnumber all other
+sentiments. This signifies that some topics or occurrences got negative
+sentiments on that particular day.
+
+\#Even though all sentiments increased on this day, July 15th, negative
+sentiments remained at their peak. This implies that something happened
+on that day that triggered unfavorable feelings.
+
+\#On these days, July 17th and 18th, negative attitudes are high,
+whereas neutral and positive sentiments are similar.
+
+\#On July 20th, all sentiments reached their lowest point, albeit there
+were still more negative sentiments among the others. This demonstrates
+that nothing happened that day.
+
+\#On this day, July 21st, all sentiments rise, with the negative
+dominating. This could imply that something happened that day that
+prompted negative responses from the people.
+
+\#We can conclude from this data that public sentiment is open to
+external forces and that it evolves over time.
+
+\end{document}
