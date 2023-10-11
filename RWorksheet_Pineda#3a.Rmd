@@ -1,0 +1,147 @@
+---
+title: "RWorksheet_Pineda#3a.Rmd"
+output: pdf_document
+date: "2023-10-04"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+LETTERS
+#1LETTERS Vector
+#a.
+First11 <- LETTERS[c(1:11)]
+First11
+
+#b. 
+LengthLETTERS <- length(LETTERS)
+NumOdd <- LETTERS[seq(LengthLETTERS) %% 2 == 1]
+NumOdd
+
+#c. 
+Vowels <- LETTERS[c(1, 5, 9, 15, 21)]
+Vowels
+
+letters
+#letters Vector
+#d. 
+Last5 <- letters[c(22:26)]
+Last5
+
+#e.
+Fifteenthto24 <- letters[c(15:24)]
+Fifteenthto24
+
+#2.a
+City <- c("Tuguegarao City", "Manila", "Iloilo City", "Tacloban",
+"Samal Island", "Davao City")
+City
+
+#b.
+Temp <- c(42, 39, 34, 34, 30, 27)
+Temp
+
+#c.
+City_Temp <- data.frame(City,Temp)
+City_Temp
+
+#d. 
+names(City_Temp) <- c("City", "Temperature")
+City_Temp
+
+str(City_Temp)
+#The code displayed the structure of the City_Temp object
+#It displayed the contents of the data frame
+#It displayed the summary of the data frame
+
+#f.
+TwoRows <- City_Temp[3:4,]
+
+#g. 
+Highest <- City_Temp[which.max(City_Temp$Temperature),]
+Highest
+
+Lowest <- City_Temp[which.min(City_Temp$Temperature),]
+Lowest
+
+#Matrices
+#2.a
+Matr <- matrix (c(1:8, 11:14), nrow = 3, ncol = 4)
+Matr
+
+#b.
+MulMatr <- matr * 2
+MulMatr
+
+#c.
+RowTwo <- MulMatr[2,]
+RowTwo
+
+#d.
+TwoColsandRows <- MulMatr[c(1,2),c(3,4)]
+TwoColsandRows
+
+#e. 
+TwoColsandRows <- MulMatr[3, c(2,3)]
+TwoColsandRows
+
+#f.
+Cols4 <- MulMatr[,4]
+Cols4
+
+#g.
+dimnames(MulMatr) <- list(c("isa", "dalawa", "tatlo"), c("uno", "dos", "tres"," quatro"))
+
+MulMatr
+
+#h.
+Matr
+dim(Matr) <- c(6,2)
+Matr
+
+#Arrays
+#3.a
+Values <- c(1, 2, 3, 6, 7, 8, 9, 0, 3, 4, 5, 1)
+rep_values <- rep(Values, each = 2)
+
+arr <- array(rep_values, dim = c(2,4,3))
+arr
+
+#3.b
+#three dimensions
+
+#3.c
+dimnames(arr) <-list(
+  letters[1:2], # row names 
+  LETTERS[1:4], # col names 
+  c("1st-Dimensional Array", "2nd-Dimensional Array","3rd-Dimensional Array") # dim names
+  )
+  
+  arr
+  
+  
+
+
+
+
