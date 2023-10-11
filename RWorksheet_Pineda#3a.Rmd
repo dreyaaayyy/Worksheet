@@ -125,20 +125,20 @@ Matr
 Values <- c(1, 2, 3, 6, 7, 8, 9, 0, 3, 4, 5, 1)
 rep_values <- rep(Values, each = 2)
 
-arr <- array(rep_values, dim = c(2,4,3))
-arr
+array <- array(rep_values, dim = c(2,4,3))
+array
 
 #3.b
 #three dimensions
 
 #3.c
-dimnames(arr) <-list(
+dimnames(Array) <-list(
   letters[1:2], # row names 
   LETTERS[1:4], # col names 
   c("1st-Dimensional Array", "2nd-Dimensional Array","3rd-Dimensional Array") # dim names
   )
   
-  arr
+  Array
   
   
 
