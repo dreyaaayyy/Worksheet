@@ -35,13 +35,27 @@ Height <- c(66.0, 68.0, 64.5, 65.0, 70.0, 64.0, 70.0, 71.0, 72.0, 64.0, 74.5, 67
 
 Gender <- c("F", "F", "F", "F", "M", "F", "F", "F", "M", "F", "M","F", "M", "M", "M", "M", "F", "F", "M", "F", "F", "M", "M", "F", "M", "M", "M", "M" )
 
-#1.a
-Data_Household <- data.frame(Shoe_Size, Height)
+Data_Household <- data.frame(ShoeSize = Shoe_Size, Height = Height, Gender = Gender)
 Data_Household
 
-#
+#1.a
+#There are three varibales which are the shoe size, height, and gender.
+#There are 28 observations
 
 #1.b
+females <- Data_Household[Data_Household$Gender == "F",]
+females
+
+males <- Data_Household[Data_Household$Gender == "M",]
+males
+
+#1.c
+mean_Shoe_Size <- mean(Data_Household$Shoe_Size)
+mean_Shoe_Size
+
+mean_Height <- mean(Data_Household$Height)
+mean_Height
+
 
 
 

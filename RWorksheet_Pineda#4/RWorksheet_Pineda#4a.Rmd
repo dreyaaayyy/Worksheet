@@ -1,0 +1,107 @@
+---
+title: "RWorksheet_Pineda#4a.Rmd"
+output: pdf_document
+date: "2023-10-25"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+#1
+Data_Household <- data.frame(Shoe_Size = c(6.5, 9.0, 8.5, 8.5, 10.5, 7.0, 9.5, 9.0, 13.0, 7.5, 10.5, 8.5, 12.0, 10.5, 13.0, 11.5, 8.5, 5.0, 10.0, 6.5, 7.5, 8.5, 10.5, 8.5, 10.5, 11.0, 9.0, 13.0),
+
+Height = c(66.0, 68.0, 64.5, 65.0, 70.0, 64.0, 70.0, 71.0, 72.0, 64.0, 74.5, 67.0, 71.0, 71.0, 77.0, 72.0, 59.0, 62.0, 72.0, 66.0, 64.0, 67.0, 73.0, 69.0, 72.0, 70.0, 69.0, 70.0),
+
+Gender = c("F", "F", "F", "F", "M", "F", "F", "F", "M", "F", "M","F", "M", "M", "M", "M", "F", "F", "M", "F", "F", "M", "M", "F", "M", "M", "M", "M" ))
+Data_Household
+
+#1.a
+#There are three varibales which are the shoe size, height, and gender.
+#There are 28 observations
+
+#1.b
+females <- Data_Household[Data_Household$Gender == "F",]
+females
+
+males <- Data_Household[Data_Household$Gender == "M",]
+males
+
+#1.c
+mean_Shoe_Size <- mean(Data_Household$Shoe_Size)
+mean_Shoe_Size
+
+mean_Height <- mean(Data_Household$Height)
+mean_Height
+
+#1.d
+#The shoe size is proportional to the height.
+
+#2
+Vec_Months <- c("March", "April", "January", "November", "January", "September", "October", "September", "November", "August", "January", "November", "November", "February", "May", "August", "July", "December", "August", "August", "September", "November", "February", "April")
+Vec_Months
+
+factor_Vec_Months <- factor(Vec_Months)
+factor_Vec_Months
+
+#3
+summary(Vec_Months)
+summary(factor_Vec_Months)
+
+#The summary of Vec_Months shows the number of observations, class and character.
+#The summary of factor_Vec_Months shows the frequency of each months.
+#Both summary ae useful in different cases where the number of observations, class, character, or frequency is needed.
+
+#4
+Direction <- c("East", "West", "North")
+Direction
+
+Frequency <- c(1,4,3)
+Frequency
+
+DataFactor
+DataFactor <- c(1,4,3)
+new_DataOrder <- factor(DataFactor, levels = c("East", "West", "North"))
+print(new_DataOrder)
+
+#5.a
+Table_imported <- read.table(file = "/cloud/project/RWorksheet_Pineda#4/import_march.csv", header = TRUE, sep =",")
+
+#5.b
+View(import_march)
+
+#6.a
+NumberRandom <- readline(prompt = "Enter Number from 1 to 50: ")
+NumberRandom <- as.numeric(NumberRandom)
+paste("The number you have chosen is", NumberRandom)
+if (NumberRandom > 50){
+  paste("The number selected is beyong the range of 1 to 50")
+}else if (NumberRandom == 20){
+  paste("TRUE")
+}else{
+  paste(NumberRandom)
+}
+
+
+
+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
