@@ -90,7 +90,7 @@ Table_imported <- read.table(file = "/cloud/project/RWorksheet_Pineda#4/import_m
 #5.b
 View(import_march)
 
-#6.a
+#6
 NumberRandom <- readline(prompt = "Enter Number from 1 to 50: ")
 NumberRandom <- as.numeric(NumberRandom)
 paste("The number you have chosen is", NumberRandom)
@@ -102,6 +102,112 @@ if (NumberRandom > 50){
   paste(NumberRandom)
 }
 
+#7
+minBills <- function(price){
+  minimumBills <- price %/% 50
+  paste("The minimum number of bills:", minimumBills)
+}
+minBills(90)
 
+#8.a
+Names <- c("Annie", "Thea", "Steve", "Hanna")
+g1 <- c(85,65,75,95)
+g2 <- c(65,75,55,75)
+g3 <- c(85,90,80,100)
+g4 <- c(100,90,85,90)
 
-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
+Math_Score <- data.frame(Name = Names, Grade1 = g1, Grade2 = g2, Grade3 = g3, Grade4 = g4)
+
+#8.b
+Math_Score$Average <- (Math_Score$Grade1 + Math_Score$Grade2 + Math_Score$Grade3 + Math_Score$Grade4) / 4
+
+HighScorers <- Math_Score[Math_Score$Average > 90,]
+HighScorers
+
+if (nrow(HighScorers) > 0){
+  paste(HighScores$Name, "'s average grade this semester is", HighScorers$Average)
+} else {
+  paste("No students have an average math score over 90.")
+}
+
+#8.c
+FirstTest <- sum(Math_Score$Grade1) / nrow(Math_Score)
+FirstTest
+
+SecondTest <- sum(Math_Score$Grade2) / nrow(Math_Score)
+SecondTest
+
+ThirdTest <- sum(Math_Score$Grade3) / nrow(Math_Score)
+ThirdTest
+
+FourthTest <- sum(Math_Score$Grade4) / nrow(Math_Score)
+FourthTest
+
+  if (FirstTest < 80){
+  paste("The 1st Test was difficult.")
+  } else if (SecondTest < 80){
+    paste("The 2nd Test was difficult.")
+  } else if (ThirdTest < 80){
+    paste("The 3rd Test was difficult.")
+  } else if (FourthTest < 80){
+    paste("The 3rd Test was difficult.")
+  } else if (FourthTest < 80){
+    paste("The 4th Test was difficult.")
+  } else {
+    paste("No test had an average score less than 80.")
+  }
+#8.d
+#Annie Scores
+if (Math_Score[1,2] > Math_Score[1,3] && Math_Score[1,2] > Math_Score[1,4] && Math_Score[1,2] > Math_Score[1,5]){
+  AnnieHighest <- Math_Score[1,2]
+} else if (Math_Score[1,3] > Math_Score[1,4] && Math_Score[1,3] > Math_Score[1,5]){
+  AnnieHighest <- Math_Score[1,3]
+} else if (Math_Score[1,4] > Math_Score[1,5] && Math_Score[1,2] > Math_Score [1,5]){
+  AnnieHighest <- Math_Score[1,4]
+} else {
+  AnnieHighest <- Math_Score[1,5]
+}
+
+#Thea Scores
+if (Math_Score[2,2] > Math_Score[2,3] && Math_Score[2,2] > Math_Score[2,4] && Math_Score[2,2] > Math_Score[2,5]){
+  TheaHighest <- Math_Score[2,2]
+} else if (Math_Score[2,3] > Math_Score[2,4] && Math_Score[2,3] > Math_Score[2,5]){
+  TheaHighest <- Math_Score[2,3]
+} else if (Math_Score[2,4] > Math_Score[2,5] && Math_Score[2,2] > Math_Score[2,5]){
+  TheaHighest <- Math_Score[2,4]
+} else {
+  TheaHighest <- Math_Score[2,5]
+}
+
+#Steve Scores
+if (Math_Score[3,2] > Math_Score[3,3] && Math_Score[3,2] > Math_Score[3,4] && Math_Score[3,2] > Math_Score[3,5]){
+  SteveHighest <- Math_Score[3,2]
+} else if (Math_Score[3,3] > Math_Score[3,4] && Math_Score[3,3] > Math_Score[3,5]){
+  SteveHighest <- Math_Score[2,3]
+} else if (Math_Score[3,4] > Math_Score[3,5] && Math_Score[3,2] > Math_Score[3,5]){
+  SteveHighest <- Math_Score[3,4]
+} else {
+  SteveHighest <- Math_Score[3,5]
+}
+
+#Hanna Scores
+if (Math_Score[4,2] > Math_Score[4,3] && Math_Score[4,2] > Math_Score[4,4] && Math_Score[4,2] > Math_Score[4,5]){
+  HannaHighest <- Math_Score[4,2]
+} else if (Math_Score[4,3] > Math_Score[4,4] && Math_Score[4,3] > Math_Score[4,5]){
+  HannaHighest <- Math_Score[2,3]
+} else if (Math_Score[4,4] > Math_Score[4,5] && Math_Score[4,2] > Math_Score[4,5]){
+  HannaHighest <- Math_Score[4,4]
+} else {
+  HannaHighest <- Math_Score[4,5]
+}
+
+Math_Score$HighestGrades <- c(AnnieHighest, TheaHighest, SteveHighest, HannaHighest)
+
+up90 <- Math_Score[Math_Score$HighestGrades > 90,]
+up90
+
+if (nrow(up90) > 0){
+  paste(up90$Name, "'s highest grade this semester is", up90$HighestGrades)
+} else {
+  paste("No students have an average math score over 90.")
+}
