@@ -1,0 +1,28 @@
+---
+title: "RWorksheet_Pineda#4b.Rmd"
+output: pdf_document
+date: "2023-11-08"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+#1
+VectorA <- c(1,2,3,4,5)
+  matrixA <- matrix(0,nrow = 5, ncol = 5)
+  for(e in 1:5)
+  for(f in 1:5)
+  {
+    matrixA[e,f] <- abs(VectorA[e]-VectorA[f])
+  }
+  matrixA
+  
+#2
+  for(e in 1:5)
+  {
+  cat(paste0("\"",rep("*",e),"\""),"\n")
+  }
+  
+#3 
+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
+
