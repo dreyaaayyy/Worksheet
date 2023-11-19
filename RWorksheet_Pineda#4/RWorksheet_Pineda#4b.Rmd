@@ -1,0 +1,73 @@
+---
+title: "RWorksheet_Pineda#4b.Rmd"
+output: pdf_document
+date: "2023-11-08"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+#1
+```{r}
+VectorA <- c(1,2,3,4,5)
+  matrixA <- matrix(0,nrow = 5, ncol = 5)
+  for(e in 1:5)
+  for(f in 1:5)
+  {
+    matrixA[e,f] <- abs(VectorA[e]-VectorA[f])
+  }
+  matrixA
+```
+
+#2
+```{r}
+  for(e in 1:5)
+  {
+  cat(paste0("\"",rep("*",e),"\""),"\n")
+  }
+```
+
+#3 
+```{r}
+    User_Input <- as.integer(readline("Enter starting number for Fibonacci Sequence: ")) 
+    x <- User_Input
+    y <- 0
+    
+    cat("Fibonacci Sequence starting number from", User_Input, ":\n")
+  repeat {
+    NumNext <- x + y
+    if (NumNext > 500){
+      break
+    }
+    cat(NumNext, " ")
+    x <- y
+    y <- NumNext
+    }
+```
+#4
+```{r}
+DataPrevious <- read.csv("DataHousehold.csv")
+head(DataPrevious)
+```
+#4.a
+```{r}
+Males <- DataPrevious[DataPrevious$Sex == "M",]
+Males
+
+Females <- DataPrevious[DataPrevious$Sex == "F",]
+Females
+
+NumofMales <- nrow(Males)
+NumofMales
+
+NumofFemales <- nrow(Females)
+NumofFemales
+```
+    
+    
+    
+    
+    
+    
+    
+
