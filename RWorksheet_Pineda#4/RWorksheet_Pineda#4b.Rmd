@@ -30,19 +30,26 @@ VectorA <- c(1,2,3,4,5)
 #3 
 ```{r}
     User_Input <- as.integer(readline("Enter starting number for Fibonacci Sequence: ")) 
-    x <- User_Input
-    y <- 0
-    
-    cat("Fibonacci Sequence starting number from", User_Input, ":\n")
+
+if(is.na(User_Input || User_Input <0)){
+  cat("Please Enter a Number")
+}else {
+  x <- User_Input
+  y <- 0
+  
+  cat("Fibonacci Sequence starting from", User_Input, ":\n")
+  
   repeat {
-    NumNext <- x + y
-    if (NumNext > 500){
+    next_num <- x + y
+    
+    if (next_num > 500){
       break
     }
-    cat(NumNext, " ")
+    cat(next_num, " ")
     x <- y
-    y <- NumNext
-    }
+    y <- next_num
+}
+}
 ```
 #4
 ```{r}
@@ -82,7 +89,7 @@ SpendingData <- data.frame(Category = c("Food", "Electricity", "Savings", "Misce
 
 SpendingData$Percentage <- SpendingData$Value / sum(SpendingData$Value * 100)
 
-colors <- c("blue", "green", "yellow", "gray")
+colors <- c("maroon", "orange", "yellow", "gray")
 
 pie(SpendingData$Value,
     labels = paste(SpendingData$Category,"(",SpendingData$Percentage,"%)"),
@@ -183,3 +190,60 @@ Alexa$variation <- gsub("White Spot", "WhiteSpot", Alexa$variation)
 Alexa
 ```
 #7.b
+```{r}
+#install.packages("dplyr")
+library("dplyr") 
+
+variations_total <- Alexa %>%
+  count(Alexa$variation)
+
+variations_total
+save(variations_total, file = "variations.RData")
+```
+#7.c
+```{r}
+load("variations.RData")
+variations_total
+VarNames <- variations_total$`Alexa$variation`
+
+TotalPlot <- barplot(variations_total$n,
+                     names.arg = VarNames,
+                     main = "Total Number of Each Variations",
+                     xlab = "Name of Variation",
+                     ylab = "Total of Each Variation",
+                     col = 1:16,
+                     space = 0.1,
+                     cex.names = 0.5,
+                     las = 2)
+knitr::include_graphics("/cloud/project/RWorksheet_Pineda#4/VariationTotal.png")
+```
+
+#7.d
+```{r}
+BlackVars <- variations_total[variations_total$`Alexa$variation` %in% c("Black", "BlackDot", "BlackPlus", "BlackShow", "BlackSpot"),]
+WhiteVars <- variations_total[variations_total$`Alexa$variation` %in% c("White", "WhiteDot", "WhitePlus", "WhiteShow", "WhiteSpot"),]
+
+par(mfrow = c(1,2))
+BlackVars
+
+BlackPlot <- barplot(height = BlackVars$n,
+                     names.arg = BlackVars$`Alexa$variation`,
+                     col = c("black"),
+                     main = "Black Variations",
+                     xlab = "variations",
+                     ylab = "Count",
+                     border = "black",
+                     space = 0.5,
+                     cex.names = 0.4)
+
+WhitePlot <- barplot(height = WhiteVars$n,
+                     names.arg = WhiteVars$`Alexa$variation`,
+                     col = c("white"),
+                     main = "White Variations",
+                     xlab = "Variations",
+                     ylab = "Count",
+                     border = "black",
+                     space = 0.5,
+                     cex.names = 0.4)
+knitr::include_graphics("/cloud/project/RWorksheet_Pineda#4/BWVariation.png")
+```
