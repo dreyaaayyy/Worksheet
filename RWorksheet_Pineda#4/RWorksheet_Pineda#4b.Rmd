@@ -49,12 +49,12 @@ VectorA <- c(1,2,3,4,5)
 DataPrevious <- read.csv("DataHousehold.csv")
 head(DataPrevious)
 ```
-#4.a
+#4.b
 ```{r}
-Males <- DataPrevious[DataPrevious$Sex == "M",]
+Males <- DataPrevious[DataPrevious$Gender == "M",]
 Males
 
-Females <- DataPrevious[DataPrevious$Sex == "F",]
+Females <- DataPrevious[DataPrevious$Gender == "F",]
 Females
 
 NumofMales <- nrow(Males)
@@ -63,11 +63,123 @@ NumofMales
 NumofFemales <- nrow(Females)
 NumofFemales
 ```
-    
-    
-    
-    
-    
-    
-    
 
+#4.c
+```{r}
+MaleFemTotal <- table(DataPrevious$Gender)
+barplot(MaleFemTotal,
+        main = "Number of Males and Females",
+        xlab = "Gender",
+        ylab = "Count",
+        col = c("pink", "blue"),
+        legend.text = rownames(MaleFemTotal),
+        beside = TRUE)
+```
+
+#5
+```{r}
+SpendingData <- data.frame(Category = c("Food", "Electricity", "Savings", "Miscellaneous"), Value = c(60, 10, 5, 25))
+
+SpendingData$Percentage <- SpendingData$Value / sum(SpendingData$Value * 100)
+
+colors <- c("blue", "green", "yellow", "gray")
+
+pie(SpendingData$Value,
+    labels = paste(SpendingData$Category,"(",SpendingData$Percentage,"%)"),
+    col = colors,
+    main = "Monthly Income Spending of Dela Cruz Family")
+
+legend("topright", SpendingData$Category, fill = colors)
+```
+
+#6
+```{r}
+data(iris)
+```
+
+#6.a
+```{r}
+str(iris)
+
+#The dataset contains information about iris flowers
+#It contains information on the length and width of the sepal as well as the length and width of the petal for 150 distinct iris flowers.
+#It also keeps track of the iris species to which each flower belongs.
+#The dataset contains three species:setosa, versicolor, and virginica
+```
+#6.b
+```{r}
+MeanofFlowers <- colMeans(iris[,1:4])
+MeanofFlowers
+```
+
+#6.c
+```{r}
+Species <- table(iris$Species)
+NameofSpecies <- c("Setosa", "Versicolor", "Virginica")
+
+pie(Species,
+    labels = NameofSpecies,
+    col = c("cyan", "navy", "coral"),
+    main = "Species Distribution in Iris Dataset")
+
+legend("topright", legend = levels(iris$Species), fill = c("cyan", "navy", "coral"),)
+```
+
+#6.d
+```{r}
+iris
+SetosaSubset <- iris[iris$Species == "setosa",]
+SetosaSubset
+
+VersicolorSubset <- iris[iris$Species == "versicolor",]
+VersicolorSubset
+
+VirginicaSubset <- iris[iris$Species == "virginica",]
+VirginicaSubset
+
+tail(SetosaSubset)
+tail(VersicolorSubset)
+tail(VirginicaSubset)
+```
+
+#6.e
+```{r}
+plot(iris$Sepal.Length, iris$Sepal.Width,
+  xlab = "Sepal Lenght",
+  ylab = "Sepal Width", 
+  main = "Iris Dataset", sub = "Sepal Width and Length",
+  pch = as.numeric(iris$Species), col = as.numeric(iris$Species))
+  
+legend("topright", legend = levels(iris$Species),
+  pch = 1:3, col = 1:3,
+  title = "Species")
+```
+
+#6.f
+#The scatterplot shows how different species of iris blooms differ in terms of speal length and width.
+#Setosa flowers have short spela lengths and wide sepla width. They are gathered in the plot's upper left corner.
+#The sepal length and width of Versicolor blooms are ordinary. They are in the center.
+#Virgininca flowers often have lengthy speal lengths and shorter sepal widths. They establish a group in the appropriate location.
+#The graphic clearly shows the differences in sepal length and width between the three iris species.
+
+#7
+```{r}
+library(readxl)
+Alexa <- read_excel("alexa_file.xlsx")
+Alexa
+```
+#7.a
+```{r}
+Alexa$variation <- gsub("Black Dot", "BlackDot", Alexa$variation)
+Alexa$variation <- gsub("Black Plus", "BlackPlus", Alexa$variation)
+Alexa$variation <- gsub("Black Show", "BlackShow", Alexa$variation)
+Alexa$variation <- gsub("Black Spot", "BlackSpot", Alexa$variation)
+
+Alexa$variation <- gsub("White Dot", "WhiteDot", Alexa$variation)
+Alexa$variation <- gsub("White Plus", "WhitePlus", Alexa$variation)
+Alexa$variation <- gsub("White Show", "WhiteShow", Alexa$variation)
+Alexa$variation <- gsub("White Spot", "WhiteSpot", Alexa$variation)
+
+Alexa
+```
+#7.b
