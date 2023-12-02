@@ -1,0 +1,136 @@
+---
+title: "RWorksheet_Pineda#4c.Rmd"
+output: pdf_document
+date: "2023-11-27"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#1.a
+```{r}
+library(readr)
+
+mpg <- read_csv("mpg.csv")
+mpg
+```
+
+#1.b
+```{r}
+str(mpg)
+#The variables manufacturer, model, trans, drv, fl, and class are categorical.
+```
+
+#1.c
+```{r}
+str(mpg)
+#The continuous variables are displ, year, cyl, cty, and hwy.
+```
+
+#2
+```{r}
+Manufacturer_asTable <- table(mpg$manufacturer)
+MostModels_Manufacturer <- names(Manufacturer_asTable)[which.max(Manufacturer_asTable)]
+
+MostModels_Manufacturer
+#Dodge Manufacturer has the most models.
+
+Model_asTable <- table(mpg$model)
+MostModelsvars <- names(Model_asTable)[which.max(Model_asTable)]
+
+MostModelsvars
+#Caravan 2wd has the most variants.
+```
+
+#2.a
+```{r}
+library(dplyr)
+
+ManufacturerModels <- data.frame(Manufacturer = mpg$manufacturer, Model = mpg$model)
+ManufacturerModels
+
+Unique_Models <- unique(ManufacturerModels)
+Unique_Models
+
+Factor_UniqueModels <- Factored_Manufacturer <- as.factor(Unique_Models$Manufacturer)
+```
+
+#2.b
+```{r}
+library(ggplot2)
+library(dplyr)
+
+UniquePlot <- plot(as.factor(Factored_Manufacturer),
+                   main = "Unique Models of Manufacturer",
+                   xlab = "Manufacturer",
+                   ylab = "Number of Unique Models",
+                   cex.names = 0.8, las = 2)
+
+UniqueCount <- Unique_Models %>%
+  count(Unique_Models$Manufacturer)
+UniqueCount
+
+ggplot(UniqueCount, aes(x = `Unique_Models$Manufacturer`, y = n)) + geom_bar(stat = "identity", fill = "plum") + 
+  labs(x = "Manufacturer", y = "Number of Unique Models")
+```
+
+#2a
+```{r}
+ggplot(mpg, aes(manufacturer, model)) + geom_point() 
+#It generates a scatterplot of the mpg dataset, with model on the x-axis and manufacturer on the y-axis.
+#In this plot, each point represents a specific model and its related manufacturer.
+```
+
+#2b
+```{r}
+#This information is useful for determining the number of models produced by each manufacturer.
+#To make it more interesting, I could add color-coded points that reflect the class variable and labels that indicate the cty variable for each point.
+```
+
+#3
+```{r}
+Top20 <- head(mpg,20)
+
+Top20Plot <- ggplot(Top20, aes(x = model, y = year)) + geom_point() + labs(x = "Models", y = "Year")
+Top20Plot
+```
+
+#4
+```{r}
+library(dplyr)
+
+Model_CarCount <- mpg %>%
+  group_by(model) %>%
+  summarize(number_cars = n())
+Model_CarCount
+```
+
+#4.a
+```{r}
+Observation20 <- head(Model_CarCount, 20)
+
+Top20 <- ggplot(Observation20, aes(x = model, y = number_cars, fill = model)) + geom_bar(stat = "identity") + labs(title = "Number of Cars per Model", x = "Model", y = "Number of Cars")
+Top20
+```
+
+#4.b
+```{r}
+Flipped_Top20 <- ggplot(Observation20, aes(x = model, y = number_cars, fill = model)) + geom_bar(stat = "identity") + labs(title = "Number of Cars per Model", x = "Model", y = "Number of Cars") + coord_flip()
+Flipped_Top20
+```
+
+#5
+```{r}
+CylDispl_Plot <- ggplot(mpg, aes(x = cyl, y = displ, color = displ)) + geom_point() + labs(title = "Relationship between Number of Cylinders and Engine Displacement", x = "Number of Cylinders", y = "Engine Displacement")
+CylDispl_Plot
+```
+
+#5.a
+```{r}
+#It will generate a scatterplot illustrating the link between cylinder count and engine displacement. Each point's color denotes the matching engine displacement.
+#As the number of cylinders increases, so does the displacement of the engine. This shows that larger engines with more cylinders tend to have higher displacement.
+```
+
+
+
