@@ -134,7 +134,7 @@ CylDispl_Plot
 
 #6
 ```{r}
-DisplHwy_Plot <- ggplot(mpg, aes(x = displ, y= hwy, color = cty)) + geom_point() + labs(title = "Relationship between EngineDisplacement and Highway MPG", x = "Engine Displacement", y = "Highway MPG")
+DisplHwy_Plot <- ggplot(mpg, aes(x = displ, y= hwy, color = cty)) + geom_point() + labs(title = "Relationship between Engine Displacement and Highway MPG", x = "Engine Displacement", y = "Highway MPG")
 DisplHwy_Plot
 ```
 
