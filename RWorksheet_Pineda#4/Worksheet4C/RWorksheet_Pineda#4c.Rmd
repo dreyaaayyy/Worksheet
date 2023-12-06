@@ -132,5 +132,9 @@ CylDispl_Plot
 #As the number of cylinders increases, so does the displacement of the engine. This shows that larger engines with more cylinders tend to have higher displacement.
 ```
 
-
+#6
+```{r}
+DisplHwy_Plot <- ggplot(mpg, aes(x = displ, y= hwy, color = cty)) + geom_point() + labs(title = "Relationship between EngineDisplacement and Highway MPG", x = "Engine Displacement", y = "Highway MPG")
+DisplHwy_Plot
+```
 
