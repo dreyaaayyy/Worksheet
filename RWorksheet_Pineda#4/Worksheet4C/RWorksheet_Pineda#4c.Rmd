@@ -136,5 +136,108 @@ CylDispl_Plot
 ```{r}
 DisplHwy_Plot <- ggplot(mpg, aes(x = displ, y= hwy, color = cty)) + geom_point() + labs(title = "Relationship between Engine Displacement and Highway MPG", x = "Engine Displacement", y = "Highway MPG")
 DisplHwy_Plot
+
+# This is a scatterplot with the x-axis representing engine displacement and the y-axis representing highway miles per gallon. The color of each point shows the city's fuel economy.
+#We can comprehend the relationship between the displ, highway, and county by using this plot. We can visually assess how different degrees of city fuel economy relate to displ and hwy by mapping color to cty.
+#This could aid you in understanding the fuel efficiency of vehicles with various engine sizes.
 ```
 
+#6.a
+```{r}
+library(readr)
+Traffic <- read.csv("traffic.csv")
+
+Obs_Num <-nrow(Traffic)
+Obs_Num
+
+Vars_Num <- ncol(Traffic)
+Vars_Num
+
+Vars <- colnames(Traffic)
+Vars
+```
+
+#6.b
+```{r}
+Subset_Junction1 <- subset(Traffic, Junction == 1)
+Subset_Junction2 <- subset(Traffic, Junction == 2)
+Subset_Junction3 <- subset(Traffic, Junction == 3)
+Subset_Junction4 <- subset(Traffic, Junction == 4)
+```
+
+#6.c
+```{r}
+Junction1_Plot <- ggplot(Subset_Junction1, aes(x = as.Date(Subset_Junction1$DateTime), y = Vehicles)) + geom_line() + scale_x_date(date_labels = "%b-%Y") + theme(legend.position = "none") + labs(title = "Junction 1", x = "Time", y = "Number of Vehicles")
+Junction1_Plot
+
+Junction2_Plot <- ggplot(Subset_Junction2, aes(x = as.Date(Subset_Junction2$DateTime), y = Vehicles)) + geom_line() + scale_x_date(date_labels = "%b-%Y") + theme(legend.position = "none") + labs(title = "Junction 2", x = "Time", y = "Number of Vehicles")
+Junction2_Plot
+
+Junction3_Plot <- ggplot(Subset_Junction3, aes(x = as.Date(Subset_Junction3$DateTime), y = Vehicles)) + geom_line() + scale_x_date(date_labels = "%b-%Y") + theme(legend.position = "none") + labs(title = "Junction 3", x = "Time", y = "Number of Vehicles")
+Junction3_Plot
+
+Junction4_Plot <- ggplot(Subset_Junction4, aes(x = as.Date(Subset_Junction4$DateTime), y = Vehicles)) + geom_line() + scale_x_date(date_labels = "%b-%Y") + theme(legend.position = "none") + labs(title = "Junction 4", x = "Time", y = "Number of Vehicles")
+Junction4_Plot
+```
+
+#7.a
+```{r}
+library(readxl)
+
+Data_Alexa <- read_excel("/cloud/project/RWorksheet_Pineda#4/Worksheet4C/alexa_file.xlsx")
+
+Obs_Num <- nrow(Data_Alexa)
+Obs_Num
+
+Cols_Num <- ncol(Data_Alexa)
+Cols_Num
+```
+
+#7.b
+```{r}
+Vars_Count <- Data_Alexa %>%
+  count(variation)
+Vars_Count
+```
+
+#7.c
+```{r}
+Alexa_Plot <- ggplot(Data_Alexa, aes(x = variation)) + geom_bar(fill = "orchid") + labs(title = "Variations", x = "Variation", y = "Count")
+Alexa_Plot
+
+#The graph illustrates the distribution of variants and their counts. Each bar represents a different variation, and the height of the bar indicates the number of times that variation is present.
+```
+
+#7.d
+```{r}
+library(dplyr)
+
+Data_Alexa$date <- as.Date(Data_Alexa$date)
+Data_Alexa$month <- format(Data_Alexa$date , "%m")
+
+CountMonth <- Data_Alexa %>%
+  count(month)
+CountMonth
+
+Monthly_ReviewsCount <- table(CountMonth)
+Monthly_ReviewsCount
+
+Alexa_Line <- ggplot(CountMonth, aes(x = month, y = n, group = 1)) + geom_line(color = "maroon") + labs(title = "Number of Verified  Reviews over Time", x = "Date", y = "Number of Verified Reviews")
+Alexa_Line
+```
+
+#7.e
+```{r}
+Variation_Ratings <- Data_Alexa %>%
+  group_by(variation) %>%
+  summarise(average_rating = mean(rating))
+Variation_Ratings
+
+HighestRatings <- Variation_Ratings %>%
+  filter(average_rating == max(average_rating))
+HighestRatings
+
+#The walnut finish receives the highest rating.
+
+ggplot(Variation_Ratings, aes(x = variation, y = average_rating)) + geom_bar(stat = "identity", fill = "skyblue") + labs(title = "Average Ratings by Variation", x = "Variation", y = "Average Rating")
+```
