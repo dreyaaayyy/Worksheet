@@ -1,0 +1,154 @@
+---
+title: "RWorksheet_Pineda#6"
+output: pdf_document
+date: "2023-12-23"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#1
+```{r}
+StudentScore <- data.frame( Student = c(1:10), Pre_test = c(55,54,47,57,51,61,57,54,63,58), Post_test = c(61,60,56,63,56,63,59,56,62,61))
+StudentScore
+
+library(pastecs)
+library(Hmisc)
+
+pastecsStats <- stat.desc(StudentScore)
+pastecsStats
+
+HmiscStats <- Hmisc::describe(StudentScore[,c("Pre_test","Post_test")])
+HmiscStats
+```
+
+#2
+```{r}
+library(dplyr)
+
+LevelFertilizer <- c(10,10,10, 20,20,50,10,20,10,50,20,50,20,10)
+OrderedLevelFertilizer <- factor(LevelFertilizer, levels = unique(LevelFertilizer))
+
+SumFertilizer <- summary(OrderedLevelFertilizer)
+SumFertilizer
+```
+
+#3
+```{r}
+LevelExercise <- c("n", "l", "n", "n", "l", "l", "n", "n", "i", "l")
+FactoredLevelExercise <- factor(LevelExercise, levels = c("n","l","i"))
+
+SumExercise <- summary(FactoredLevelExercise)
+SumExercise
+```
+
+#4
+```{r}
+States <- c("tas", "sa", "qld", "nsw", "nsw", "nt", "wa", "wa", "qld", "vic", "nsw", "vic", "qld", "qld", "sa", "tas", "sa", "nt", "wa", "vic", "qld", "nsw", "nsw", "wa", "sa", "act", "nsw", "vic", "vic", "act")
+
+FactoredState <- factor(States)
+FactoredState
+
+SumStates <- summary(FactoredState)
+SumStates
+
+#A factor that matches the distinct values in the original character vector will be the outcome. The levels are arranged alphabetically, with each level representing a certain state or area.
+```
+
+#5.a
+```{r}
+Incomes <- c(60, 49, 40, 61, 64, 60, 59, 54,
+62, 69, 70, 42, 56, 61, 61, 61, 58, 51, 48,
+65, 49, 49, 41, 48, 52, 46, 59, 46, 58, 43)
+
+meanIncomes <- tapply(Incomes, FactoredState, mean)
+meanIncomes
+```
+
+#5.b
+act      nsw       nt      qld       sa      tas      vic       wa
+44.50000 57.33333 55.50000 53.60000 55.00000 60.50000 56.00000 52.25000
+#The average income for each state is included in this output. Additionally, each name corresponds to a stateFactor factor level.
+
+#6.a
+```{r}
+stdError <- function(x) sqrt(var(x)/length(x))
+incster <- tapply(Incomes, States, stdError)
+
+StandardError <- tapply(Incomes, FactoredState, stdError)
+StandardError
+```
+
+#6.b
+#The standard errors connected to each state's estimated mean income are contained in the vector index. The sample mean's variability is reflected in the standard error, where higher standard errors denote higher variability.
+
+#7
+```{r}
+library(titanic)
+
+data("titanic_train")
+
+DataTitanic <- titanic_train
+
+str(DataTitanic)
+
+survived <- subset(DataTitanic, Survived == 1)
+survived
+
+dead <- subset(DataTitanic, Survived == 0)
+dead
+
+head(survived)
+head(dead)
+```
+
+#8
+```{r}
+library(readr)
+library(pastecs)
+library(Hmisc)
+
+BreastCancer <- read.csv("Wisconsin_BreastCancer.csv")
+BreastCancer
+
+BreastCancerStats <- stat.desc(BreastCancer)
+BreastCancerStats
+
+Clump_Thickness_SEmean <- BreastCancerStats["SE.mean", "clump_thickness"]
+Clump_Thickness_SEmean
+
+Marginal_Adhesion_coefVar <- BreastCancerStats["coef.var", "marginal_adhesion"]
+Marginal_Adhesion_coefVar
+
+Bare_Nucleoli_null <- BreastCancerStats["nbr.null", "bare_nucleoli"]
+Bare_Nucleoli_null
+
+Bland_Chromatin_mean <- BreastCancerStats["mean", "bland_chromatin"]
+Bland_Chromatin_mean
+
+Bland_Chromatin_std_dev <- BreastCancerStats["std.dev", "bland_chromatin"]
+Bland_Chromatin_std_dev
+
+shape_uniformity_CImean <- BreastCancerStats["CI.mean", "shape_uniformity"]
+shape_uniformity_CImean
+```
+
+#8.e
+```{r}
+percentage_malignant <- (sum(BreastCancer$class == 4) / nrow(BreastCancer)) * 100
+paste0("Percentage of Respondents who are Malignant: ", percentage_malignant,"%")
+```
+
+#9
+```{r}
+library(AppliedPredictiveModeling)
+library(xlsx)
+data("abalone")
+
+#Viewabalone
+head(abalone)
+summary(abalone)
+#write.xlsx(abalone, "Abalone.xlsx")
+```
+
